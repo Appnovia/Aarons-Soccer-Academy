@@ -2,18 +2,20 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Menu, Moon, Sun, X } from "lucide-react";
 
 const aboutLinks = [
   { label: "Rules", href: "/about/rules" },
-  { label: "How AFA is run", href: "/about/how-afa-is-run" },
+  { label: "How Aaron's Soccer Academy is run", href: "/about/how-afa-is-run" },
 ];
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const pathname = usePathname();
   const [isDark, setIsDark] = useState(() => {
     if (typeof window === "undefined") return false;
     const savedTheme = window.localStorage.getItem("theme");
@@ -77,9 +79,17 @@ export default function Navbar() {
         </Link>
 
         <div className={`nav-content ${isMenuOpen ? "nav-content--open" : ""}`}>
+          <button
+            className="mobile-theme-toggle"
+            type="button"
+            onClick={toggleTheme}
+            aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
+          >
+            {isDark ? <Sun size={19} /> : <Moon size={19} />}
+          </button>
           <div className="nav-links">
             <Link
-              className="nav-link nav-link--active"
+              className={`nav-link ${pathname === "/" ? "nav-link--active" : ""}`}
               href="/"
               onClick={closeMobileMenu}
             >
@@ -87,7 +97,7 @@ export default function Navbar() {
             </Link>
             <div className="nav-dropdown" ref={aboutRef}>
               <button
-                className="nav-link nav-link--button"
+                className={`nav-link nav-link--button ${pathname.startsWith("/about") ? "nav-link--active" : ""}`}
                 type="button"
                 aria-expanded={isAboutOpen}
                 onClick={() => setIsAboutOpen((open) => !open)}
@@ -114,14 +124,14 @@ export default function Navbar() {
               </div>
             </div>
             <Link
-              className="nav-link"
+              className={`nav-link ${pathname.startsWith("/sponsorship") ? "nav-link--active" : ""}`}
               href="/sponsorship"
               onClick={closeMobileMenu}
             >
               Sponsorship
             </Link>
             <Link
-              className="nav-link"
+              className={`nav-link ${pathname.startsWith("/contact") ? "nav-link--active" : ""}`}
               href="/contact"
               onClick={closeMobileMenu}
             >

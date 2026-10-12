@@ -9,7 +9,7 @@ const categories = [
     description:
       "Building the foundation through fun, basic skills and a love for the game.",
     image: "/categories/category-1.jpg",
-    alt: "Young AFA players standing together on the pitch",
+    alt: "Young Aaron's Soccer Academy players standing together on the pitch",
   },
   {
     name: "Category B",
@@ -24,7 +24,7 @@ const categories = [
     description:
       "Advanced training, competitive matches and preparation for higher opportunities.",
     image: "/categories/category-3.jpg",
-    alt: "Older AFA player during football training",
+    alt: "Older Aaron's Soccer Academy player during football training",
   },
 ];
 
@@ -37,7 +37,9 @@ export default function PlayerCategories() {
       <div className="player-categories__heading">
         <div>
           <p className="eyebrow">Our Players</p>
-          <h2 id="player-categories-title">Meet the AFA family</h2>
+          <h2 id="player-categories-title">
+            Meet the Aaron&apos;s Soccer Academy family
+          </h2>
         </div>
         <p className="player-categories__intro">
           We train players between 6 and 16 years, grouped into three categories
