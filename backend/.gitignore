@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+coverage/
+.cache/
+
+.agents/
+.claude/
+skills-lock.json
+*.tsbuildinfo
+
+
+/generated/prisma
